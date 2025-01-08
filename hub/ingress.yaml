@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gke-starter-combined
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "starter-project"
+    networking.gke.io/managed-certificates: "managed-cert"
+spec:
+  rules:
+    - host: "app.cluster.ad-absurdum.me"
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gke-starter-reactjs
+              port:
+                number: 80
+    - host: "api.cluster.ad-absurdum.me"
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gke-starter-flask
+              port:
+                number: 80
