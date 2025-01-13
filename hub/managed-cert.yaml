@@ -6,3 +6,4 @@ spec:
   domains:
     - app.cluster.ad-absurdum.me
     - api.cluster.ad-absurdum.me
+    - nextjs.cluster.ad-absurdum.me
